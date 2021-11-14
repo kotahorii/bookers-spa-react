@@ -2,10 +2,15 @@ import Cookies from 'js-cookie'
 import { signIn, signUp } from 'lib/api/auth'
 import client from 'lib/api/client'
 import { useMutation } from 'react-query'
+import { SignInData, SignUpData } from 'types/types'
 
 export const useAuthMutation = () => {
-  const signUpMutate = useMutation(signUp)
-  const signInMutate = useMutation(signIn)
+  const signUpMutate = useMutation((data: SignUpData) =>
+    client.post('auth', data)
+  )
+  const signInMutate = useMutation((data: SignInData) =>
+    client.post('auth/sign_in', data)
+  )
   const signOutMutate = useMutation(() =>
     client.delete('auth/sign_out', {
       headers: {
