@@ -1,5 +1,4 @@
 import Cookies from 'js-cookie'
-import { signIn, signUp } from 'lib/api/auth'
 import client from 'lib/api/client'
 import { useMutation } from 'react-query'
 import { SignInData, SignUpData } from 'types/types'
