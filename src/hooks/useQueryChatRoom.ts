@@ -17,5 +17,6 @@ export const useQueryChatRoom = (id: number) => {
   return useQuery<ResChatRoom, Error>({
     queryKey: 'chatRooms',
     queryFn: () => getChatRoom(id),
+    staleTime: 0
   })
 }
