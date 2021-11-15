@@ -15,20 +15,20 @@ export const LoginForm: VFC<Props> = ({
 }) => {
   return (
     <>
-      <label>Email:</label>
+      <label className="text-gray-400">Email:</label>
       <input
         type="text"
         placeholder="email"
-        className="my-3 px-3 py-1 border border-gray-300"
+        className="my-3 px-3 py-1 rounded-lg border border-gray-300"
         value={email}
         onChange={emailChange}
       />
 
-      <label>Password:</label>
+      <label className="text-gray-400">Password:</label>
       <input
         type="password"
         placeholder="password"
-        className="my-3 px-3 py-1 border border-gray-300"
+        className="my-3 px-3 py-1 rounded-lg border border-gray-300"
         value={password}
         onChange={passwordChange}
       />
