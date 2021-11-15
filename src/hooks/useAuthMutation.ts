@@ -2,14 +2,14 @@ import Cookies from 'js-cookie'
 import client from 'lib/api/client'
 import { useMutation, useQueryClient } from 'react-query'
 import { useNavigate } from 'react-router'
-import { ResUser, SignInData, SignUpData, User } from 'types/types'
+import { ResAuthUser, SignInData, SignUpFormData, User } from 'types/types'
 
 export const useAuthMutation = () => {
   const navigate = useNavigate()
   const queryClient = useQueryClient()
 
   const signUpMutate = useMutation(
-    (data: SignUpData) => client.post<ResUser>('auth', data),
+    (data: SignUpFormData) => client.post<ResAuthUser>('auth', data),
     {
       onSuccess: async (res) => {
         queryClient.setQueryData('user', res.data.data)
@@ -21,7 +21,7 @@ export const useAuthMutation = () => {
     }
   )
   const signInMutate = useMutation(
-    (data: SignInData) => client.post<ResUser>('auth/sign_in', data),
+    (data: SignInData) => client.post<ResAuthUser>('auth/sign_in', data),
     {
       onSuccess: async (res) => {
         queryClient.setQueryData('user', res.data.data)
