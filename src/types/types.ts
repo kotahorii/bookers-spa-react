@@ -15,15 +15,21 @@ export type SignInData = {
 }
 
 export type User = {
+  id: number
+  uid: string
+  provider: string
+  email: string
+  name: string
+  nickname?: string
+  image?: string
+  allowPasswordChange: boolean
+}
+
+export type ResUser = {
+  data: User
+}
+
+export type currentUser = {
   status: string
-  currentUser: {
-    id: number
-    uid: string
-    provider: string
-    email: string
-    name: string
-    nickname?: string
-    image?: string
-    allowPasswordChange: boolean
-  }
+  currentUser: User
 }

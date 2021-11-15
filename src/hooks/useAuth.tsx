@@ -27,7 +27,6 @@ export const useAuth = () => {
     (e: ChangeEvent<HTMLInputElement>) => setPasswordConf(e.target.value),
     []
   )
-
   const toggleMode = useCallback(() => setIsLogin(!isLogin), [isLogin])
   const authUser = useCallback(
     async (e: FormEvent<HTMLFormElement>) => {
