@@ -81,6 +81,18 @@ export type Like = {
   toUserId: number | undefined | null
 }
 
+export type ResLikes = {
+  status: string
+  activeLikes: string[]
+  passiveLikes: string[]
+}
+
+export type ResCreateLike = {
+  status: string
+  like: string
+  is_matched: boolean
+}
+
 export type ChatRoom = {
   chatRoom: {
     id: number
@@ -89,9 +101,25 @@ export type ChatRoom = {
   lastMessage: Message
 }
 
+export type ResChatRoom = {
+  status: string
+  otherUser: User
+  messages: string[]
+}
+
+export type ResChatRooms = {
+  status: string
+  chatRooms: ChatRoom[]
+}
+
 export type Message = {
   chatRoomId: number
   userId: number | undefined
   content: string
   createdAt?: Date
+}
+
+export type ResMessage = {
+  status: string
+  message: string
 }
