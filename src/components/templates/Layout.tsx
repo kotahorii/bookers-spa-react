@@ -21,6 +21,7 @@ export const Layout: VFC<Props> = ({ children }) => {
           sign out
         </button>
         <div>{data?.currentUser.email}</div>
+        <div>{data?.currentUser.name}</div>
       </nav>
       <main className="flex flex-1 flex-col justify-center items-center w-screen">
         {children}

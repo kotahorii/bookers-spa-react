@@ -13,7 +13,6 @@ const getCurrentUser = async () => {
   })
   return data
 }
-
 export const useQueryUser = () => {
   return useQuery<User, Error>({
     queryKey: 'user',

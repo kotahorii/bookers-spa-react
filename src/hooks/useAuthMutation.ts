@@ -1,13 +1,23 @@
 import Cookies from 'js-cookie'
 import client from 'lib/api/client'
-import { useMutation } from 'react-query'
+import { useMutation, useQueryClient } from 'react-query'
 import { useNavigate } from 'react-router'
-import { SignInData, SignUpData } from 'types/types'
+import { SignInData, SignUpData, User } from 'types/types'
 
 export const useAuthMutation = () => {
   const navigate = useNavigate()
-  const signUpMutate = useMutation((data: SignUpData) =>
-    client.post('auth', data)
+  const queryClient = useQueryClient()
+  const signUpMutate = useMutation(
+    (data: SignUpData) => client.post('auth', data),
+    {
+      onSuccess: (res) => {
+        Cookies.set('_access_token', res.headers['access-token'])
+        Cookies.set('_client', res.headers['client'])
+        Cookies.set('_uid', res.headers['uid'])
+
+        navigate('/main')
+      },
+    }
   )
   const signInMutate = useMutation(
     (data: SignInData) => client.post('auth/sign_in', data),
@@ -32,6 +42,10 @@ export const useAuthMutation = () => {
       }),
     {
       onSuccess: () => {
+        const previousUser = queryClient.getQueryData<User>('user')
+        if (previousUser) {
+          queryClient.removeQueries('user')
+        }
         Cookies.remove('_access_token')
         Cookies.remove('_client')
         Cookies.remove('_uid')

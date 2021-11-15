@@ -1,15 +1,21 @@
 import { useAuth } from 'hooks/useAuth'
 import { SwitchVerticalIcon } from '@heroicons/react/solid'
+import { LoginForm } from 'components/organisms/auth/LoginForm'
+import { SignUpForm } from 'components/organisms/auth/SignUpForm'
 
 export const Auth = () => {
   const {
+    name,
     email,
     password,
+    passwordConf,
     isLogin,
-    authUser,
+    nameChange,
     emailChange,
     toggleMode,
     passwordChange,
+    passwordConfChange,
+    authUser,
   } = useAuth()
   return (
     <div className="flex flex-col justify-center items-center bg-gray-800 min-h-screen w-screen">
@@ -17,23 +23,25 @@ export const Auth = () => {
         onSubmit={authUser}
         className="mt-8 flex justify-center items-center flex-col text-gray-600"
       >
-        <label>Email:</label>
-        <input
-          type="text"
-          placeholder="email"
-          className="my-3 px-3 py-1 border border-gray-300"
-          value={email}
-          onChange={emailChange}
-        />
-
-        <label>Password:</label>
-        <input
-          type="password"
-          placeholder="password"
-          className="my-3 px-3 py-1 border border-gray-300"
-          value={password}
-          onChange={passwordChange}
-        />
+        {isLogin ? (
+          <LoginForm
+            email={email}
+            password={password}
+            emailChange={emailChange}
+            passwordChange={passwordChange}
+          />
+        ) : (
+          <SignUpForm
+            name={name}
+            email={email}
+            password={password}
+            passwordConf={passwordConf}
+            nameChange={nameChange}
+            emailChange={emailChange}
+            passwordChange={passwordChange}
+            passwordConfChange={passwordConfChange}
+          />
+        )}
         <button
           type="submit"
           disabled={!email || !password}
