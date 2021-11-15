@@ -1,6 +1,6 @@
 import client from 'lib/api/client'
 import { useMutation, useQueryClient } from 'react-query'
-import { ResUpdateDetailUser, UpdateUserFormData, User } from 'types/types'
+import { ResUpdateDetailUser, UpdateUserFormData, User } from 'types/userTypes'
 
 type Data = {
   id: number | undefined | null

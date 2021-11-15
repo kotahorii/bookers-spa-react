@@ -1,7 +1,7 @@
 import Cookies from 'js-cookie'
 import client from 'lib/api/client'
 import { useQuery } from 'react-query'
-import { CurrentUser, User } from 'types/types'
+import { CurrentUser, User } from 'types/userTypes'
 
 const getCurrentUser = async () => {
   const { data } = await client.get<CurrentUser>('/auth/sessions', {

@@ -1,7 +1,7 @@
 import Cookies from 'js-cookie'
 import client from 'lib/api/client'
 import { useQuery } from 'react-query'
-import { ResLikes } from 'types/types'
+import { ResLikes } from 'types/likeTypes'
 
 const getLikes = async () => {
   const { data } = await client.get<ResLikes>('likes', {

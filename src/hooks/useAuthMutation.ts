@@ -2,7 +2,7 @@ import Cookies from 'js-cookie'
 import client from 'lib/api/client'
 import { useMutation, useQueryClient } from 'react-query'
 import { useNavigate } from 'react-router'
-import { ResAuthUser, SignInData, SignUpFormData, User } from 'types/types'
+import { ResAuthUser, SignInData, SignUpFormData, User } from 'types/userTypes'
 
 export const useAuthMutation = () => {
   const navigate = useNavigate()

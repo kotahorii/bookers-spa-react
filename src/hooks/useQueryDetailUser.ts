@@ -1,6 +1,6 @@
 import client from 'lib/api/client'
 import { useQuery } from 'react-query'
-import { ResUpdateDetailUser, User } from 'types/types'
+import { ResUpdateDetailUser, User } from 'types/userTypes'
 
 const getUser = async (id: number | undefined) => {
   const { data } = await client.get<ResUpdateDetailUser>(`users/${id}`)

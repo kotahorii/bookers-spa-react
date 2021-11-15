@@ -1,5 +1,5 @@
 import { useAppDispatch, useAppSelector } from 'app/hooks'
-import { ChangeEvent, FormEvent, useCallback, useState } from 'react'
+import { ChangeEvent, FormEvent, useCallback } from 'react'
 import {
   selectBirthday,
   selectEmail,
@@ -22,7 +22,7 @@ import {
   setPrefecture,
   setPreview,
 } from 'slices/authSlice'
-import { SignUpFormData } from 'types/types'
+import { SignUpFormData } from 'types/userTypes'
 import { useAuthMutation } from './useAuthMutation'
 
 export const useAuth = () => {

@@ -1,7 +1,7 @@
 import Cookies from 'js-cookie'
 import client from 'lib/api/client'
 import { useQuery } from 'react-query'
-import { ResChatRoom } from 'types/types'
+import { ResChatRoom } from 'types/chatRoomTypes'
 
 const getChatRoom = async (id: number) => {
   const { data } = await client.get<ResChatRoom>(`chat_rooms/${id}`, {
