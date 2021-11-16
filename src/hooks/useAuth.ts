@@ -89,9 +89,9 @@ export const useAuth = () => {
       uploadImage(e)
       previewImage(e)
     },
-    [dispatch]
+    [uploadImage, previewImage]
   )
-  const resetPreview = useCallback(() => dispatch(setPreview('')), [])
+  const resetPreview = useCallback(() => dispatch(setPreview('')), [dispatch])
   const toggleMode = useCallback(
     () => dispatch(setIsLogin(!isLogin)),
     [isLogin, dispatch]
@@ -110,16 +110,19 @@ export const useAuth = () => {
     return formData
   }, [name, email, password, passwordConf, gender, prefecture, birthday, image])
 
-  const authUser = async (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-    const data = createFormData()
+  const authUser = useCallback(
+    (e: FormEvent<HTMLFormElement>) => {
+      e.preventDefault()
+      const data = createFormData()
 
-    if (isLogin) {
-      signInMutate.mutate({ email: email, password: password })
-    } else {
-      signUpMutate.mutate(data)
-    }
-  }
+      if (isLogin) {
+        signInMutate.mutate({ email: email, password: password })
+      } else {
+        signUpMutate.mutate(data)
+      }
+    },
+    [createFormData, email, password, isLogin]
+  )
   return {
     name,
     email,

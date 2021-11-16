@@ -7,7 +7,7 @@ import { useMain } from 'hooks/useMain'
 
 const MainMemo: VFC = () => {
   const { data: currentUser, isLoading } = useQueryUser()
-  const { openModal, currentUserAge, currentUserPrefecture } = useMain()
+  const { openModal, userAge, userPrefecture } = useMain()
   if (isLoading) return <Layout>Loading...</Layout>
   return (
     <Layout>
@@ -28,7 +28,8 @@ const MainMemo: VFC = () => {
           )}
         </div>
         <p className="text-lg">
-          {currentUser?.name} {currentUserAge()}歳 ({currentUserPrefecture()})
+          {currentUser?.name} {userAge(currentUser)}歳 (
+          {userPrefecture(currentUser)})
         </p>
         <div className="8/12 h-0.5 bg-gray-500"></div>
         <p>自己紹介</p>

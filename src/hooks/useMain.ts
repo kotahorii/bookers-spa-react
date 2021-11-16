@@ -34,14 +34,17 @@ export const useMain = () => {
   }, [dispatch, currentUser])
   const profileChange = useCallback(
     (e: ChangeEvent<HTMLInputElement>) => dispatch(setProfile(e.target.value)),
-    []
+    [dispatch]
   )
-  const currentUserPrefecture = useCallback(() => {
-    return prefectures[(currentUser?.prefecture || 0) - 1]
-  }, [prefectures, currentUser])
+  const userPrefecture = useCallback(
+    (user) => {
+      return prefectures[(user?.prefecture || 0) - 1]
+    },
+    [prefectures]
+  )
 
-  const currentUserAge = useCallback(() => {
-    const birthday = currentUser?.birthday.toString().replace(/-/g, '') || ''
+  const userAge = useCallback((user) => {
+    const birthday = user?.birthday.toString().replace(/-/g, '') || ''
     if (birthday.length !== 8) return
 
     const date = new Date()
@@ -51,7 +54,7 @@ export const useMain = () => {
       ('0' + date.getDate()).slice(-2)
 
     return Math.floor((parseInt(today) - parseInt(birthday)) / 10000)
-  }, [currentUser])
+  }, [])
 
   const createFormData = useCallback((): UpdateUserFormData => {
     const formData = new FormData()
@@ -62,14 +65,17 @@ export const useMain = () => {
     return formData
   }, [name, prefecture, profile, image])
 
-  const updateUser = async (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-    const data = {
-      id: currentUser?.id,
-      formData: createFormData(),
-    }
-    updateUserMutation.mutate(data)
-  }
+  const updateUser = useCallback(
+    (e: FormEvent<HTMLFormElement>) => {
+      e.preventDefault()
+      const data = {
+        id: currentUser?.id,
+        formData: createFormData(),
+      }
+      updateUserMutation.mutate(data)
+    },
+    [currentUser, createFormData]
+  )
   return {
     isOpen,
     closeModal,
@@ -77,7 +83,7 @@ export const useMain = () => {
     profile,
     profileChange,
     updateUser,
-    currentUserPrefecture,
-    currentUserAge,
+    userPrefecture,
+    userAge,
   }
 }

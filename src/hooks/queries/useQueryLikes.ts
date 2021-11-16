@@ -1,7 +1,8 @@
 import Cookies from 'js-cookie'
 import client from 'lib/api/client'
 import { useQuery } from 'react-query'
-import { ResLikes } from 'types/likeTypes'
+import { ResCreateLike, ResLikes } from 'types/likeTypes'
+import { User } from 'types/userTypes'
 
 const getLikes = async () => {
   const { data } = await client.get<ResLikes>('likes', {
@@ -11,10 +12,10 @@ const getLikes = async () => {
       uid: Cookies.get('_uid') as string,
     },
   })
-  return data
+  return data.activeLikes
 }
 export const useQueryLikes = () => {
-  return useQuery<ResLikes, Error>({
+  return useQuery<User[], Error>({
     queryKey: 'likes',
     queryFn: getLikes,
     staleTime: 0,
