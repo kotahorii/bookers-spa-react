@@ -2,8 +2,9 @@ import { useAuth } from 'hooks/useAuth'
 import { SwitchVerticalIcon } from '@heroicons/react/solid'
 import { LoginForm } from 'components/organisms/auth/LoginForm'
 import { SignUpForm } from 'components/organisms/auth/SignUpForm'
+import { memo } from 'react'
 
-export const Auth = () => {
+export const AuthMemo = () => {
   const { email, password, isLogin, toggleMode, authUser } = useAuth()
   return (
     <div className="flex flex-col justify-center items-center bg-gray-800 min-h-screen w-screen">
@@ -16,12 +17,12 @@ export const Auth = () => {
           <button
             type="submit"
             disabled={!email || !password}
-            className="disabled:opacity-40 py-1 px-3 text-white bg-indigo-600 hover:bg-indigo-400 rounded focus:outline-none "
+            className="disabled:opacity-40 shadow-lg py-1 px-3 text-white bg-indigo-600 hover:bg-indigo-500 rounded focus:outline-none "
           >
             {isLogin ? 'Login' : 'Register'}
           </button>
           <SwitchVerticalIcon
-            className="w-5 text-blue-500 cursor-pointer"
+            className="w-5 text-blue-500 hover:text-blue-400 cursor-pointer"
             onClick={toggleMode}
           />
         </div>
@@ -29,3 +30,5 @@ export const Auth = () => {
     </div>
   )
 }
+
+export const Auth = memo(AuthMemo)

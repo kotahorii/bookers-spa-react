@@ -91,6 +91,7 @@ export const useAuth = () => {
     },
     [dispatch]
   )
+  const resetPreview = useCallback(() => dispatch(setPreview('')), [])
   const toggleMode = useCallback(
     () => dispatch(setIsLogin(!isLogin)),
     [isLogin, dispatch]
@@ -138,6 +139,7 @@ export const useAuth = () => {
     prefectureChange,
     birthdayChange,
     imageChange,
+    resetPreview,
     toggleMode,
     authUser,
   }

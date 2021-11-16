@@ -5,6 +5,12 @@ export const store = configureStore({
   reducer: {
     auth: authReducer,
   },
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      serializableCheck: {
+        ignoredActions: ['auth/setBirthday.'],
+      },
+    }),
 })
 
 export type AppDispatch = typeof store.dispatch

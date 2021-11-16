@@ -1,6 +1,7 @@
 import { useAuthMutation } from 'hooks/useAuthMutation'
+import { memo } from 'react'
 
-export const Header = () => {
+export const HeaderMemo = () => {
   const { signOutMutate } = useAuthMutation()
 
   return (
@@ -19,3 +20,5 @@ export const Header = () => {
     </nav>
   )
 }
+
+export const Header = memo(HeaderMemo)

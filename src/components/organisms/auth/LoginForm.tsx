@@ -1,7 +1,7 @@
 import { useAuth } from 'hooks/useAuth'
-import { VFC } from 'react'
+import { memo, VFC } from 'react'
 
-export const LoginForm: VFC = () => {
+export const LoginFormMemo: VFC = () => {
   const { email, emailChange, password, passwordChange } = useAuth()
   return (
     <>
@@ -9,7 +9,7 @@ export const LoginForm: VFC = () => {
       <input
         type="text"
         placeholder="email"
-        className="my-3 px-3 py-1 bg-gray-600 rounded-lg border border-gray-500"
+        className="my-3 px-3 py-1 bg-gray-600 text-gray-400 rounded-lg border border-gray-500"
         value={email}
         onChange={emailChange}
       />
@@ -18,10 +18,12 @@ export const LoginForm: VFC = () => {
       <input
         type="password"
         placeholder="password"
-        className="my-3 px-3 py-1 bg-gray-600 rounded-lg border border-gray-500"
+        className="my-3 px-3 py-1 bg-gray-600 text-gray-400 rounded-lg border border-gray-500"
         value={password}
         onChange={passwordChange}
       />
     </>
   )
 }
+
+export const LoginForm = memo(LoginFormMemo)

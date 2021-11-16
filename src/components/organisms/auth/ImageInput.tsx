@@ -1,11 +1,11 @@
-import { ChangeEvent, useRef, VFC } from 'react'
+import { ChangeEvent, memo, useRef, VFC } from 'react'
 import { PhotographIcon } from '@heroicons/react/solid'
 
 type Props = {
   onChange: (e: ChangeEvent<HTMLInputElement>) => void
 }
 
-export const ImageInput: VFC<Props> = ({ onChange }) => {
+export const ImageInputMemo: VFC<Props> = ({ onChange }) => {
   const inputRef = useRef<any>(null)
 
   const fileUpload = () => {
@@ -27,3 +27,5 @@ export const ImageInput: VFC<Props> = ({ onChange }) => {
     </>
   )
 }
+
+export const ImageInput = memo(ImageInputMemo)

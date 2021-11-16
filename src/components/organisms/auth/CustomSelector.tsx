@@ -1,4 +1,4 @@
-import { ChangeEvent, VFC } from 'react'
+import { ChangeEvent, memo, VFC } from 'react'
 
 type Props = {
   value: number
@@ -10,7 +10,7 @@ type Props = {
   arrays: string[]
 }
 
-export const CustomSelector: VFC<Props> = ({ value, onChange, arrays }) => {
+export const CustomSelectorMemo: VFC<Props> = ({ value, onChange, arrays }) => {
   return (
     <div>
       <select
@@ -27,3 +27,5 @@ export const CustomSelector: VFC<Props> = ({ value, onChange, arrays }) => {
     </div>
   )
 }
+
+export const CustomSelector = memo(CustomSelectorMemo)

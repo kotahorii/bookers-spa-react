@@ -1,13 +1,14 @@
 import { useAuth } from 'hooks/useAuth'
-import { VFC } from 'react'
+import { memo, VFC } from 'react'
 import { genders } from 'data/genders'
 import { prefectures } from 'data/prefectures'
 import { CustomDatePicker } from './CustomDatePicker'
 import { CustomSelector } from './CustomSelector'
 import { CustomInput } from './CustomInput'
 import { ImageInput } from './ImageInput'
+import { ImagePreview } from './ImagePreview'
 
-export const SignUpForm: VFC = () => {
+export const SignUpFormMemo: VFC = () => {
   const {
     name,
     nameChange,
@@ -23,24 +24,38 @@ export const SignUpForm: VFC = () => {
     prefectureChange,
     birthday,
     birthdayChange,
-    image,
     preview,
     imageChange,
+    resetPreview,
   } = useAuth()
   return (
     <>
       <div className="flex md:flex-row flex-col items-start md:space-x-5">
         <div className="flex flex-col">
           <label className="text-gray-400">Name:</label>
-          <CustomInput value={name} onChange={nameChange} />
+          <CustomInput value={name} placeholder="name" onChange={nameChange} />
           <label className="text-gray-400">Email:</label>
-          <CustomInput value={email} onChange={emailChange} />
+          <CustomInput
+            value={email}
+            placeholder="email"
+            onChange={emailChange}
+          />
         </div>
         <div className="flex flex-col">
           <label className="text-gray-400">Password:</label>
-          <CustomInput value={password} onChange={passwordChange} />
+          <CustomInput
+            value={password}
+            placeholder="password"
+            type="password"
+            onChange={passwordChange}
+          />
           <label className="text-gray-400">PasswordConfirmation:</label>
-          <CustomInput value={passwordConf} onChange={passwordConfChange} />
+          <CustomInput
+            value={passwordConf}
+            placeholder="password"
+            type="password"
+            onChange={passwordConfChange}
+          />
         </div>
         <div className="flex flex-col justify-between  space-y-3">
           <label className="text-gray-400">Gender:</label>
@@ -59,9 +74,14 @@ export const SignUpForm: VFC = () => {
         <div className="flex flex-col space-y-3">
           <label className="text-gray-400">Birthday:</label>
           <CustomDatePicker selected={birthday} onChange={birthdayChange} />
-          <ImageInput onChange={imageChange} />
+          <div className="flex flex-row justify-center ista space-x-3">
+            <ImageInput onChange={imageChange} />
+            <ImagePreview preview={preview} resetPreview={resetPreview} />
+          </div>
         </div>
       </div>
     </>
   )
 }
+
+export const SignUpForm = memo(SignUpFormMemo)

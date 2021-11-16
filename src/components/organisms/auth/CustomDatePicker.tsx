@@ -1,13 +1,13 @@
 import DatePicker, { registerLocale } from 'react-datepicker'
 import ja from 'date-fns/locale/ja'
 import 'react-datepicker/dist/react-datepicker.css'
-import { VFC } from 'react'
+import { memo, VFC } from 'react'
 
 type Props = {
   selected: Date | null
   onChange: (date: Date | null) => any
 }
-export const CustomDatePicker: VFC<Props> = ({ selected, onChange }) => {
+export const CustomDatePickerMemo: VFC<Props> = ({ selected, onChange }) => {
   registerLocale('ja', ja)
   return (
     <DatePicker
@@ -19,3 +19,5 @@ export const CustomDatePicker: VFC<Props> = ({ selected, onChange }) => {
     />
   )
 }
+
+export const CustomDatePicker = memo(CustomDatePickerMemo)

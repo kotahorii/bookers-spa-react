@@ -1,11 +1,13 @@
 import { Layout } from 'components/templates/Layout'
 import { useQueryUser } from 'hooks/useQueryUser'
-import { VFC } from 'react'
+import { memo, VFC } from 'react'
 
-export const Main: VFC = () => {
+const MainMemo: VFC = () => {
   const { isLoading } = useQueryUser()
   if (isLoading) return <p>Loading...</p>
   return <Layout>
     
   </Layout>
 }
+
+export const Main = memo(MainMemo)
