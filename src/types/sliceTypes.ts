@@ -9,4 +9,5 @@ export type AuthState = {
   image: string
   preview: string
   isLogin: boolean
+  isOpenModal: boolean
 }

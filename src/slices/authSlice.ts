@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { RootState } from '../app/store'
-import { AuthState } from 'types/types'
+import { AuthState } from 'types/sliceTypes'
 
 const initialState: AuthState = {
   name: '',
@@ -13,6 +13,7 @@ const initialState: AuthState = {
   image: '',
   preview: '',
   isLogin: true,
+  isOpenModal: false,
 }
 
 export const authSlice = createSlice({
@@ -50,6 +51,9 @@ export const authSlice = createSlice({
     setIsLogin: (state, action: PayloadAction<boolean>) => {
       state.isLogin = action.payload
     },
+    setIsOpenModal: (state, action: PayloadAction<boolean>) => {
+      state.isOpenModal = action.payload
+    },
     resetInput: (state) => {
       state.name = initialState.name
       state.email = initialState.email
@@ -60,6 +64,7 @@ export const authSlice = createSlice({
       state.birthday = initialState.birthday
       state.image = initialState.image
       state.preview = initialState.preview
+      state.isOpenModal = false
     },
   },
 })
@@ -75,6 +80,7 @@ export const {
   setImage,
   setPreview,
   setIsLogin,
+  setIsOpenModal,
   resetInput,
 } = authSlice.actions
 export const selectName = (state: RootState) => state.auth.name
@@ -86,6 +92,7 @@ export const selectPrefecture = (state: RootState) => state.auth.prefecture
 export const selectBirthday = (state: RootState) => state.auth.birthday
 export const selectImage = (state: RootState) => state.auth.image
 export const selectPreview = (state: RootState) => state.auth.preview
+export const selectIsOpenModal = (state: RootState) => state.auth.isOpenModal
 export const selectIsLogin = (state: RootState) => state.auth.isLogin
 
 export default authSlice.reducer
