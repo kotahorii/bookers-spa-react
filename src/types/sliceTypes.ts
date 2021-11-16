@@ -1,4 +1,5 @@
 export type AuthState = {
+  id: number | null | undefined
   name: string
   email: string
   password: string
@@ -10,4 +11,5 @@ export type AuthState = {
   preview: string
   isLogin: boolean
   isOpenModal: boolean
+  profile: string
 }

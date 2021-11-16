@@ -3,6 +3,7 @@ import { RootState } from '../app/store'
 import { AuthState } from 'types/sliceTypes'
 
 const initialState: AuthState = {
+  id: 0,
   name: '',
   email: '',
   password: '',
@@ -14,6 +15,7 @@ const initialState: AuthState = {
   preview: '',
   isLogin: true,
   isOpenModal: false,
+  profile: '',
 }
 
 export const authSlice = createSlice({
@@ -21,6 +23,9 @@ export const authSlice = createSlice({
   initialState,
 
   reducers: {
+    setId: (state, action: PayloadAction<number | null | undefined>) => {
+      state.id = action.payload
+    },
     setName: (state, action: PayloadAction<string>) => {
       state.name = action.payload
     },
@@ -54,7 +59,11 @@ export const authSlice = createSlice({
     setIsOpenModal: (state, action: PayloadAction<boolean>) => {
       state.isOpenModal = action.payload
     },
+    setProfile: (state, action: PayloadAction<string>) => {
+      state.profile = action.payload
+    },
     resetInput: (state) => {
+      state.id = initialState.id
       state.name = initialState.name
       state.email = initialState.email
       state.password = initialState.password
@@ -65,11 +74,13 @@ export const authSlice = createSlice({
       state.image = initialState.image
       state.preview = initialState.preview
       state.isOpenModal = false
+      state.profile = initialState.profile
     },
   },
 })
 
 export const {
+  setId,
   setName,
   setEmail,
   setPassword,
@@ -81,8 +92,10 @@ export const {
   setPreview,
   setIsLogin,
   setIsOpenModal,
+  setProfile,
   resetInput,
 } = authSlice.actions
+export const selectId = (state: RootState) => state.auth.id
 export const selectName = (state: RootState) => state.auth.name
 export const selectEmail = (state: RootState) => state.auth.email
 export const selectPassword = (state: RootState) => state.auth.password
@@ -93,6 +106,7 @@ export const selectBirthday = (state: RootState) => state.auth.birthday
 export const selectImage = (state: RootState) => state.auth.image
 export const selectPreview = (state: RootState) => state.auth.preview
 export const selectIsOpenModal = (state: RootState) => state.auth.isOpenModal
+export const selectProfile = (state: RootState) => state.auth.profile
 export const selectIsLogin = (state: RootState) => state.auth.isLogin
 
 export default authSlice.reducer

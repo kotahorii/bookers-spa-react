@@ -3,9 +3,10 @@ import { SwitchVerticalIcon } from '@heroicons/react/solid'
 import { LoginForm } from 'components/organisms/auth/LoginForm'
 import { SignUpForm } from 'components/organisms/auth/SignUpForm'
 import { memo } from 'react'
+import { CustomButton } from 'components/atoms/CustomButton'
 
 export const AuthMemo = () => {
-  const { email, password, isLogin, toggleMode, authUser } = useAuth()
+  const { isLogin, toggleMode, authUser } = useAuth()
   return (
     <div className="flex flex-col justify-center items-center bg-gray-800 min-h-screen w-screen">
       <form
@@ -14,13 +15,7 @@ export const AuthMemo = () => {
       >
         {isLogin ? <LoginForm /> : <SignUpForm />}
         <div className="flex flex-row mt-5 space-x-3 items-center justify-center">
-          <button
-            type="submit"
-            disabled={!email || !password}
-            className="disabled:opacity-40 shadow-lg py-1 px-3 text-white bg-indigo-600 hover:bg-indigo-500 rounded focus:outline-none "
-          >
-            {isLogin ? 'Login' : 'Register'}
-          </button>
+          <CustomButton type="submit" text={isLogin ? 'Login' : 'Register'} />
           <SwitchVerticalIcon
             className="w-5 text-blue-500 hover:text-blue-400 cursor-pointer"
             onClick={toggleMode}
