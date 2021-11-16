@@ -23,7 +23,7 @@ import {
   setPreview,
 } from 'slices/authSlice'
 import { SignUpFormData } from 'types/userTypes'
-import { useAuthMutation } from './useAuthMutation'
+import { useAuthMutation } from './queries/useAuthMutation'
 
 export const useAuth = () => {
   const dispatch = useAppDispatch()

@@ -1,4 +1,4 @@
-import { useQueryUser } from 'hooks/useQueryUser'
+import { useQueryUser } from 'hooks/queries/useQueryUser'
 import { VFC } from 'react'
 import { Navigate } from 'react-router'
 

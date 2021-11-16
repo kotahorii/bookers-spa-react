@@ -74,7 +74,7 @@ export const SignUpFormMemo: VFC = () => {
         <div className="flex flex-col space-y-3">
           <label className="text-gray-400">Birthday:</label>
           <CustomDatePicker selected={birthday} onChange={birthdayChange} />
-          <div className="flex flex-row justify-center ista space-x-3">
+          <div className="flex flex-row justify-center space-x-3">
             <ImageInput onChange={imageChange} />
             <ImagePreview preview={preview} resetPreview={resetPreview} />
           </div>

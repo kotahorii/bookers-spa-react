@@ -1,4 +1,4 @@
-import { useAuthMutation } from 'hooks/useAuthMutation'
+import { useAuthMutation } from 'hooks/queries/useAuthMutation'
 import { memo } from 'react'
 
 export const HeaderMemo = () => {

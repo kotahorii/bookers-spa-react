@@ -1,5 +1,5 @@
 import { Header } from 'components/organisms/Header'
-import { useQueryUser } from 'hooks/useQueryUser'
+import { useQueryUser } from 'hooks/queries/useQueryUser'
 import { VFC, ReactNode } from 'react'
 
 type Props = {
