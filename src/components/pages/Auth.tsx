@@ -4,44 +4,14 @@ import { LoginForm } from 'components/organisms/auth/LoginForm'
 import { SignUpForm } from 'components/organisms/auth/SignUpForm'
 
 export const Auth = () => {
-  const {
-    name,
-    email,
-    password,
-    passwordConf,
-    isLogin,
-    nameChange,
-    emailChange,
-    toggleMode,
-    passwordChange,
-    passwordConfChange,
-    authUser,
-  } = useAuth()
+  const { email, password, isLogin, toggleMode, authUser } = useAuth()
   return (
     <div className="flex flex-col justify-center items-center bg-gray-800 min-h-screen w-screen">
       <form
         onSubmit={authUser}
         className="mt-8 flex shadow-xl bg-gray-700 rounded-xl px-7 py-5 items-center flex-col text-gray-600"
       >
-        {isLogin ? (
-          <LoginForm
-            email={email}
-            password={password}
-            emailChange={emailChange}
-            passwordChange={passwordChange}
-          />
-        ) : (
-          <SignUpForm
-            name={name}
-            email={email}
-            password={password}
-            passwordConf={passwordConf}
-            nameChange={nameChange}
-            emailChange={emailChange}
-            passwordChange={passwordChange}
-            passwordConfChange={passwordConfChange}
-          />
-        )}
+        {isLogin ? <LoginForm /> : <SignUpForm />}
         <div className="flex flex-row mt-5 space-x-3 items-center justify-center">
           <button
             type="submit"

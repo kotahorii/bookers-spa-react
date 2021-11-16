@@ -9,7 +9,7 @@ const initialState: AuthState = {
   passwordConf: '',
   gender: 0,
   prefecture: 0,
-  birthday: null,
+  birthday: new Date('2000-01-01T00:00:00'),
   image: '',
   preview: '',
   isLogin: true,
@@ -50,6 +50,17 @@ export const authSlice = createSlice({
     setIsLogin: (state, action: PayloadAction<boolean>) => {
       state.isLogin = action.payload
     },
+    resetInput: (state) => {
+      state.name = initialState.name
+      state.email = initialState.email
+      state.password = initialState.password
+      state.passwordConf = initialState.passwordConf
+      state.gender = initialState.gender
+      state.prefecture = initialState.prefecture
+      state.birthday = initialState.birthday
+      state.image = initialState.image
+      state.preview = initialState.preview
+    },
   },
 })
 
@@ -64,6 +75,7 @@ export const {
   setImage,
   setPreview,
   setIsLogin,
+  resetInput,
 } = authSlice.actions
 export const selectName = (state: RootState) => state.auth.name
 export const selectEmail = (state: RootState) => state.auth.email

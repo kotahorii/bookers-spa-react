@@ -1,11 +1,14 @@
+import { useAppDispatch } from 'app/hooks'
 import Cookies from 'js-cookie'
 import client from 'lib/api/client'
 import { useMutation, useQueryClient } from 'react-query'
 import { useNavigate } from 'react-router'
+import { resetInput } from 'slices/authSlice'
 import { ResAuthUser, SignInData, SignUpFormData, User } from 'types/userTypes'
 
 export const useAuthMutation = () => {
   const navigate = useNavigate()
+  const dispatch = useAppDispatch()
   const queryClient = useQueryClient()
 
   const signUpMutate = useMutation(
@@ -17,6 +20,7 @@ export const useAuthMutation = () => {
         Cookies.set('_client', res.headers['client'])
         Cookies.set('_uid', res.headers['uid'])
         navigate('/main')
+        dispatch(resetInput())
       },
     }
   )
@@ -29,6 +33,7 @@ export const useAuthMutation = () => {
         Cookies.set('_client', res.headers['client'])
         Cookies.set('_uid', res.headers['uid'])
         navigate('/main')
+        dispatch(resetInput())
       },
     }
   )

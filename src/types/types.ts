@@ -1,11 +1,3 @@
-
-
-
-
-
-
-
-
 export type AuthState = {
   name: string
   email: string
