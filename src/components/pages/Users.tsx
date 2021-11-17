@@ -1,4 +1,3 @@
-import { UserCircleIcon } from '@heroicons/react/solid'
 import { useAppDispatch } from 'app/hooks'
 import { DetailModal } from 'components/molecules/modal/DetailModal'
 import { CustomModal } from 'components/organisms/main/CustomModal'
@@ -8,6 +7,7 @@ import { useQueryUsers } from 'hooks/queries/useQueryUsers'
 import { useUser } from 'hooks/useUser'
 import { memo } from 'react'
 import { setIsOpenDetailModal, setSelectedUser } from 'slices/userSlice'
+import { CustomUserIcon } from 'components/molecules/CustomUserIcon'
 
 export const UsersMemo = () => {
   const { data: users, isLoading: isLoadingUsers } = useQueryUsers()
@@ -28,11 +28,7 @@ export const UsersMemo = () => {
             }}
             key={user.id}
           >
-            {user.image.url ? (
-              <img className="w-16" alt="avatar" src={user?.image.url} />
-            ) : (
-              <UserCircleIcon className="w-16 text-gray-400" />
-            )}
+            <CustomUserIcon user={user} />
             <p>{user.name}</p>
           </div>
         ))}

@@ -1,4 +1,4 @@
-import { UserCircleIcon } from '@heroicons/react/solid'
+import { CustomUserIcon } from 'components/molecules/CustomUserIcon'
 import { Layout } from 'components/templates/Layout'
 import { useQueryChatRooms } from 'hooks/queries/useQueryChatRooms'
 import { useChatRoom } from 'hooks/useChatRoom'
@@ -18,15 +18,7 @@ export const ChatRooms = () => {
             to={`/chatroom/${chatRoom.chatRoom.id}`}
             className="cursor-pointer px-3 py-3 bg-gray-700 rounded-lg"
           >
-            {chatRoom.otherUser.image.url ? (
-              <img
-                className="w-16"
-                alt="avatar"
-                src={chatRoom.otherUser.image.url}
-              />
-            ) : (
-              <UserCircleIcon className="w-16 text-gray-400" />
-            )}
+            <CustomUserIcon user={chatRoom.otherUser} />
             <p>{chatRoom.otherUser.name}</p>
             <p>
               {chatRoom.lastMessage === null

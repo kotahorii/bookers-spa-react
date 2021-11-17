@@ -1,7 +1,7 @@
-import { UserCircleIcon } from '@heroicons/react/solid'
 import { useMain } from 'hooks/useMain'
 import { useUser } from 'hooks/useUser'
 import { HeartIcon } from '@heroicons/react/solid'
+import { CustomUserIcon } from '../CustomUserIcon'
 
 export const DetailModal = () => {
   const { selectedUser, isLikedUser, toLike } = useUser()
@@ -9,15 +9,7 @@ export const DetailModal = () => {
   return (
     <div>
       <div className="w-48 flex flex-col items-center">
-        {selectedUser?.image.url ? (
-          <img
-            src={selectedUser.image.url}
-            alt="preview img"
-            className="w-24 h-24 rounded-full shadow-md"
-          />
-        ) : (
-          <UserCircleIcon className="w-20" />
-        )}
+        <CustomUserIcon user={selectedUser} />
       </div>
       <p className="text-lg">
         {selectedUser?.name} {userAge(selectedUser)}歳 (

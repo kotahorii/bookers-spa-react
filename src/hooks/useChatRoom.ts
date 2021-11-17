@@ -37,7 +37,7 @@ export const useChatRoom = () => {
       e.preventDefault()
 
       const data: Message = {
-        chatRoomId: Number(id!),
+        chatRoomId: Number(id),
         userId: currentUser?.id,
         content: content,
       }

@@ -6,7 +6,10 @@ export type Message = {
 }
 
 export type ResMessage = {
+  id: number
   chatRoomId: number
-  userId: number | undefined
   content: string
+  createdAt: Date
+  updatedAt: Date
+  userId: number
 }

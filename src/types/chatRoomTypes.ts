@@ -1,5 +1,5 @@
 import { User } from './userTypes'
-import { Message } from './messageTypes'
+import { Message, ResMessage } from './messageTypes'
 
 export type ChatRoom = {
   chatRoom: {
@@ -12,7 +12,7 @@ export type ChatRoom = {
 export type ResChatRoom = {
   status: string
   otherUser: User
-  messages: string[]
+  messages: ResMessage[]
 }
 
 export type ResChatRooms = {
