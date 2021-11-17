@@ -76,6 +76,7 @@ export const useMain = () => {
     },
     [currentUser, createFormData]
   )
+
   return {
     isOpen,
     closeModal,

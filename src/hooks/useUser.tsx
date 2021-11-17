@@ -1,4 +1,11 @@
+import { useAppDispatch, useAppSelector } from 'app/hooks'
 import { useCallback } from 'react'
+import {
+  selectSelectedUser,
+  selectIsOpenDetailModal,
+  setSelectedUser,
+  setIsOpenDetailModal,
+} from 'slices/userSlice'
 import { InputLike } from 'types/likeTypes'
 import { User } from 'types/userTypes'
 import { useLikeMutation } from './queries/useLikeMutation'
@@ -11,6 +18,9 @@ export const useUser = () => {
   const { data: users } = useQueryUsers()
   const { data: likes } = useQueryLikes()
   const { createLikeMutation } = useLikeMutation()
+  const dispatch = useAppDispatch()
+  const selectedUser = useAppSelector(selectSelectedUser)
+  const isOpenDetailModal = useAppSelector(selectIsOpenDetailModal)
 
   const handleCreateLike = useCallback(
     async (user: User) => {
@@ -27,5 +37,22 @@ export const useUser = () => {
       return likes.some((likedUser) => likedUser.id === userId)
     }
   }
-  return { users, likes, isLikedUser, handleCreateLike }
+
+  const openUserDetailModal = useCallback(
+    (user) => {
+      dispatch(setSelectedUser(user))
+      dispatch(setIsOpenDetailModal(true))
+    },
+    [dispatch]
+  )
+
+  return {
+    users,
+    likes,
+    isLikedUser,
+    handleCreateLike,
+    openUserDetailModal,
+    selectedUser,
+    isOpenDetailModal,
+  }
 }

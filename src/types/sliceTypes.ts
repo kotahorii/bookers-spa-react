@@ -1,5 +1,4 @@
 export type AuthState = {
-  id: number | null | undefined
   name: string
   email: string
   password: string
