@@ -8,7 +8,7 @@ import { CustomInput } from './CustomInput'
 import { ImageInput } from './ImageInput'
 import { ImagePreview } from './ImagePreview'
 
-export const SignUpFormMemo: VFC = () => {
+const SignUpFormMemo: VFC = () => {
   const {
     name,
     nameChange,

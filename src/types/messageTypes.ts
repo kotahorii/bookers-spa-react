@@ -13,3 +13,8 @@ export type ResMessage = {
   updatedAt: Date
   userId: number
 }
+
+export type ResCreateMessage = {
+  status: string
+  message: ResMessage
+}

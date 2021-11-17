@@ -2,8 +2,9 @@ import { useMain } from 'hooks/useMain'
 import { useUser } from 'hooks/useUser'
 import { HeartIcon } from '@heroicons/react/solid'
 import { CustomUserIcon } from '../CustomUserIcon'
+import { memo } from 'react'
 
-export const DetailModal = () => {
+export const DetailModal = memo(() => {
   const { selectedUser, isLikedUser, toLike } = useUser()
   const { userAge, userPrefecture } = useMain()
   return (
@@ -33,4 +34,4 @@ export const DetailModal = () => {
       </div>
     </div>
   )
-}
+})

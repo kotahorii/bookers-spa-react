@@ -2,9 +2,10 @@ import { CustomUserIcon } from 'components/molecules/CustomUserIcon'
 import { Layout } from 'components/templates/Layout'
 import { useQueryChatRooms } from 'hooks/queries/useQueryChatRooms'
 import { useChatRoom } from 'hooks/useChatRoom'
+import { memo } from 'react'
 import { Link } from 'react-router-dom'
 
-export const ChatRooms = () => {
+export const ChatRooms = memo(() => {
   const { data: chatRooms, isLoading } = useQueryChatRooms()
   const { lastMessage } = useChatRoom()
 
@@ -30,4 +31,4 @@ export const ChatRooms = () => {
       </div>
     </Layout>
   )
-}
+})

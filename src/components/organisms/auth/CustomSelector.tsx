@@ -10,7 +10,7 @@ type Props = {
   arrays: string[]
 }
 
-export const CustomSelectorMemo: VFC<Props> = ({ value, onChange, arrays }) => {
+const CustomSelectorMemo: VFC<Props> = ({ value, onChange, arrays }) => {
   return (
     <div>
       <select

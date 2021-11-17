@@ -9,7 +9,7 @@ import { memo } from 'react'
 import { setIsOpenDetailModal, setSelectedUser } from 'slices/userSlice'
 import { CustomUserIcon } from 'components/molecules/CustomUserIcon'
 
-export const UsersMemo = () => {
+const UsersMemo = () => {
   const { data: users, isLoading: isLoadingUsers } = useQueryUsers()
   const { isLoading: isLoadingLikes } = useQueryLikes()
   const dispatch = useAppDispatch()

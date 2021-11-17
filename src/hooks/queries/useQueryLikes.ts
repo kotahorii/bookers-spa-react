@@ -16,7 +16,7 @@ const getLikes = async () => {
 }
 export const useQueryLikes = () => {
   return useQuery<User[], Error>({
-    queryKey: 'likes',
+    queryKey: 'likedUsers',
     queryFn: getLikes,
     staleTime: 0,
   })

@@ -5,7 +5,7 @@ type Props = {
   onChange: (e: ChangeEvent<HTMLInputElement>) => void
 }
 
-export const ImageInputMemo: VFC<Props> = ({ onChange }) => {
+const ImageInputMemo: VFC<Props> = ({ onChange }) => {
   const inputRef = useRef<any>(null)
 
   const fileUpload = () => {

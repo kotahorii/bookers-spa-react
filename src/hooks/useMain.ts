@@ -21,6 +21,7 @@ export const useMain = () => {
   const profile = useAppSelector(selectProfile)
   const isOpen = useAppSelector(selectIsOpenModal)
   const { data: currentUser } = useQueryUser()
+  
   const closeModal = useCallback(() => {
     dispatch(setIsOpenModal(false))
   }, [dispatch])

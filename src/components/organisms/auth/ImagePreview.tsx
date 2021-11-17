@@ -5,8 +5,7 @@ type Props = {
   preview: string
   resetPreview: () => void
 }
-
-export const ImagePreviewMemo: VFC<Props> = ({ preview, resetPreview }) => {
+const ImagePreviewMemo: VFC<Props> = ({ preview, resetPreview }) => {
   return preview ? (
     <div className="relative w-28 h-28 px-2 py-2 ">
       <XCircleIcon

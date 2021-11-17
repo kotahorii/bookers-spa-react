@@ -2,14 +2,13 @@ import { CustomButton } from 'components/atoms/CustomButton'
 import { CustomUserIcon } from 'components/molecules/CustomUserIcon'
 import { CustomInput } from 'components/organisms/auth/CustomInput'
 import { Layout } from 'components/templates/Layout'
-import { useMessageMutations } from 'hooks/queries/useMessageMutations'
 import { useQueryChatRoom } from 'hooks/queries/useQueryChatRoom'
 import { useChatRoom } from 'hooks/useChatRoom'
-import { useEffect } from 'react'
+import { memo, useEffect } from 'react'
 import { useQueryClient } from 'react-query'
 import { useParams } from 'react-router'
 
-export const ChatRoom = () => {
+export const ChatRoom = memo(() => {
   const queryClient = useQueryClient()
   const { id } = useParams()
   const { data: chatRoom, isLoading } = useQueryChatRoom(Number(id))
@@ -47,4 +46,4 @@ export const ChatRoom = () => {
       </div>
     </Layout>
   )
-}
+})

@@ -15,11 +15,4 @@ export type InputLike = {
 export type ResLikes = {
   status: string
   activeLikes: User[]
-  passiveLikes: User[]
-}
-
-export type ResCreateLike = {
-  status: string
-  like: User
-  is_matched: boolean
 }

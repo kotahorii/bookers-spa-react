@@ -1,7 +1,7 @@
 import { useAuth } from 'hooks/useAuth'
 import { memo, VFC } from 'react'
 
-export const LoginFormMemo: VFC = () => {
+const LoginFormMemo: VFC = () => {
   const { email, emailChange, password, passwordChange } = useAuth()
   return (
     <>

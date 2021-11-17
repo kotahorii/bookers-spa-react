@@ -5,7 +5,7 @@ import { SignUpForm } from 'components/organisms/auth/SignUpForm'
 import { memo } from 'react'
 import { CustomButton } from 'components/atoms/CustomButton'
 
-export const AuthMemo = () => {
+const AuthMemo = () => {
   const { isLogin, toggleMode, authUser } = useAuth()
   return (
     <div className="flex flex-col justify-center items-center bg-gray-800 min-h-screen w-screen">

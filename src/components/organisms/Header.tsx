@@ -3,7 +3,7 @@ import { useAuthMutation } from 'hooks/queries/useAuthMutation'
 import { memo } from 'react'
 import { Link } from 'react-router-dom'
 
-export const HeaderMemo = () => {
+const HeaderMemo = () => {
   const { signOutMutate } = useAuthMutation()
 
   return (

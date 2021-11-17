@@ -6,8 +6,9 @@ import { CustomInput } from 'components/organisms/auth/CustomInput'
 import { CustomSelector } from 'components/organisms/auth/CustomSelector'
 import { ImageInput } from 'components/organisms/auth/ImageInput'
 import { ImagePreview } from 'components/organisms/auth/ImagePreview'
+import { memo } from 'react'
 
-export const EditModalText = () => {
+export const EditModalText = memo(() => {
   const { profile, profileChange, updateUser, closeModal } = useMain()
   const {
     name,
@@ -45,4 +46,4 @@ export const EditModalText = () => {
       </div>
     </form>
   )
-}
+})

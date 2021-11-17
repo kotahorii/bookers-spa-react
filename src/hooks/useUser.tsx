@@ -15,7 +15,7 @@ import { useQueryUsers } from './queries/useQueryUsers'
 export const useUser = () => {
   const { data: currentUser } = useQueryUser()
   const { data: users } = useQueryUsers()
-  const { data: likes } = useQueryLikes()
+  const { data: likedUsers } = useQueryLikes()
   const { createLikeMutation } = useLikeMutation()
   const selectedUser = useAppSelector(selectSelectedUser)
   const isOpenDetailModal = useAppSelector(selectIsOpenDetailModal)
@@ -31,23 +31,25 @@ export const useUser = () => {
     },
     [currentUser, createLikeMutation]
   )
-  const isLikedUser = (userId: number | number) => {
-    if (likes) {
-      return likes.some((likedUser) => likedUser.id === userId)
-    }
-  }
+  const isLikedUser = useCallback(
+    (userId: number | number) => {
+      if (likedUsers) {
+        return likedUsers.some((likedUser) => likedUser.id === userId)
+      }
+    },
+    [likedUsers]
+  )
   const closeDetailModal = useCallback(() => {
     dispatch(setIsOpenDetailModal(false))
   }, [dispatch])
 
-  const toLike = () => {
+  const toLike = useCallback(() => {
     isLikedUser(selectedUser.id) ? void 0 : handleCreateLike(selectedUser)
-    closeDetailModal()
-  }
+  }, [handleCreateLike, isLikedUser, selectedUser])
 
   return {
     users,
-    likes,
+    likedUsers,
     isLikedUser,
     toLike,
     handleCreateLike,

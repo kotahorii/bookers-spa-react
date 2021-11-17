@@ -7,7 +7,7 @@ type Props = {
   selected: Date | null
   onChange: (date: Date | null) => any
 }
-export const CustomDatePickerMemo: VFC<Props> = ({ selected, onChange }) => {
+const CustomDatePickerMemo: VFC<Props> = ({ selected, onChange }) => {
   registerLocale('ja', ja)
   return (
     <DatePicker

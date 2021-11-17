@@ -1,12 +1,12 @@
 import { Header } from 'components/organisms/Header'
 import { useQueryUser } from 'hooks/queries/useQueryUser'
-import { VFC, ReactNode } from 'react'
+import { VFC, ReactNode, memo } from 'react'
 
 type Props = {
   children: ReactNode
 }
 
-export const Layout: VFC<Props> = ({ children }) => {
+export const Layout: VFC<Props> = memo(({ children }) => {
   const { isLoading, isError } = useQueryUser()
   if (isLoading) return <p>isLoading</p>
   if (isError) return <p>Error</p>
@@ -18,4 +18,4 @@ export const Layout: VFC<Props> = ({ children }) => {
       </main>
     </div>
   )
-}
+})
