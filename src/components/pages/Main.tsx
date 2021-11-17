@@ -2,12 +2,13 @@ import { Layout } from 'components/templates/Layout'
 import { useQueryUser } from 'hooks/queries/useQueryUser'
 import { memo, VFC } from 'react'
 import { PencilAltIcon, UserCircleIcon } from '@heroicons/react/solid'
-import { EditModal } from 'components/organisms/main/EditModal'
+import { CustomModal } from 'components/organisms/main/CustomModal'
 import { useMain } from 'hooks/useMain'
+import { EditModalText } from 'components/molecules/modal/EditModal'
 
 const MainMemo: VFC = () => {
   const { data: currentUser, isLoading } = useQueryUser()
-  const { openModal, userAge, userPrefecture } = useMain()
+  const { openModal, isOpen, closeModal, userAge, userPrefecture } = useMain()
   if (isLoading) return <Layout>Loading...</Layout>
   return (
     <Layout>
@@ -39,7 +40,9 @@ const MainMemo: VFC = () => {
           <p>よろしくお願いします。</p>
         )}
       </div>
-      <EditModal />
+      <CustomModal title="Edit Profile" isOpen={isOpen} closeModal={closeModal}>
+        <EditModalText />
+      </CustomModal>
     </Layout>
   )
 }

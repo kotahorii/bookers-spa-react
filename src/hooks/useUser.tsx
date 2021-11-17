@@ -3,8 +3,8 @@ import { useCallback } from 'react'
 import {
   selectSelectedUser,
   selectIsOpenDetailModal,
-  setSelectedUser,
   setIsOpenDetailModal,
+  resetSelectedUser,
 } from 'slices/userSlice'
 import { InputLike } from 'types/likeTypes'
 import { User } from 'types/userTypes'
@@ -18,9 +18,9 @@ export const useUser = () => {
   const { data: users } = useQueryUsers()
   const { data: likes } = useQueryLikes()
   const { createLikeMutation } = useLikeMutation()
-  const dispatch = useAppDispatch()
   const selectedUser = useAppSelector(selectSelectedUser)
   const isOpenDetailModal = useAppSelector(selectIsOpenDetailModal)
+  const dispatch = useAppDispatch()
 
   const handleCreateLike = useCallback(
     async (user: User) => {
@@ -37,22 +37,23 @@ export const useUser = () => {
       return likes.some((likedUser) => likedUser.id === userId)
     }
   }
+  const closeDetailModal = useCallback(() => {
+    dispatch(setIsOpenDetailModal(false))
+  }, [dispatch])
 
-  const openUserDetailModal = useCallback(
-    (user) => {
-      dispatch(setSelectedUser(user))
-      dispatch(setIsOpenDetailModal(true))
-    },
-    [dispatch]
-  )
+  const toLike = () => {
+    isLikedUser(selectedUser.id) ? void 0 : handleCreateLike(selectedUser)
+    closeDetailModal()
+  }
 
   return {
     users,
     likes,
     isLikedUser,
+    toLike,
     handleCreateLike,
-    openUserDetailModal,
     selectedUser,
     isOpenDetailModal,
+    closeDetailModal,
   }
 }

@@ -15,15 +15,10 @@ export const useLikeMutation = () => {
     {
       onSuccess: (res, variant) => {
         const previousLikes = queryClient.getQueryData<User[]>('likes')
-        const previousUsers = queryClient.getQueryData<User[]>('users')
-        if (previousLikes && previousUsers) {
+        if (previousLikes) {
           queryClient.setQueryData<User[]>('likes', [
             res.data.like,
             ...previousLikes,
-          ])
-          queryClient.setQueryData<User[]>('users', [
-            variant.toUser,
-            ...previousUsers,
           ])
         }
       },

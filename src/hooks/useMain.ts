@@ -45,7 +45,7 @@ export const useMain = () => {
 
   const userAge = useCallback((user) => {
     const birthday = user?.birthday.toString().replace(/-/g, '') || ''
-    if (birthday.length !== 8) return
+    if (birthday.length !== 8) return ''
 
     const date = new Date()
     const today =
