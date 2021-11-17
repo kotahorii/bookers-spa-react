@@ -6,6 +6,7 @@ type Props = {
   type?: string
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void
 }
+
 const CustomInputMemo: VFC<Props> = ({
   value,
   placeholder,

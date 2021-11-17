@@ -1,4 +1,4 @@
-import { Header } from 'components/organisms/Header'
+import { Header } from 'components/templates/Header'
 import { useQueryUser } from 'hooks/queries/useQueryUser'
 import { VFC, ReactNode, memo } from 'react'
 

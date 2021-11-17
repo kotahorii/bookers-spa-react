@@ -3,6 +3,7 @@ import { memo, VFC } from 'react'
 
 const LoginFormMemo: VFC = () => {
   const { email, emailChange, password, passwordChange } = useAuth()
+  
   return (
     <>
       <label className="text-gray-400">Email:</label>

@@ -12,8 +12,8 @@ import { CustomUserIcon } from 'components/molecules/CustomUserIcon'
 const UsersMemo = () => {
   const { data: users, isLoading: isLoadingUsers } = useQueryUsers()
   const { isLoading: isLoadingLikes } = useQueryLikes()
-  const dispatch = useAppDispatch()
   const { isOpenDetailModal, closeDetailModal } = useUser()
+  const dispatch = useAppDispatch()
 
   if (isLoadingLikes && isLoadingUsers) return <Layout>Loading...</Layout>
   return (

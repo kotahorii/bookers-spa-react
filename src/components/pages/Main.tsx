@@ -9,6 +9,7 @@ import { EditModalText } from 'components/molecules/modal/EditModal'
 const MainMemo: VFC = () => {
   const { data: currentUser, isLoading } = useQueryUser()
   const { openModal, isOpen, closeModal, userAge, userPrefecture } = useMain()
+  
   if (isLoading) return <Layout>Loading...</Layout>
   return (
     <Layout>

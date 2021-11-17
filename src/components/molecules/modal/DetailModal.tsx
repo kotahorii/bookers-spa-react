@@ -7,6 +7,7 @@ import { memo } from 'react'
 export const DetailModal = memo(() => {
   const { selectedUser, isLikedUser, toLike } = useUser()
   const { userAge, userPrefecture } = useMain()
+  
   return (
     <div>
       <div className="w-48 flex flex-col items-center">

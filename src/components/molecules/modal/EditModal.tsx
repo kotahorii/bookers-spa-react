@@ -10,6 +10,7 @@ import { memo } from 'react'
 
 export const EditModalText = memo(() => {
   const { profile, profileChange, updateUser, closeModal } = useMain()
+  
   const {
     name,
     nameChange,

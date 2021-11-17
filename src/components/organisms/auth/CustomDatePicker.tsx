@@ -7,8 +7,10 @@ type Props = {
   selected: Date | null
   onChange: (date: Date | null) => any
 }
+
 const CustomDatePickerMemo: VFC<Props> = ({ selected, onChange }) => {
   registerLocale('ja', ja)
+  
   return (
     <DatePicker
       className="py-1 pl-2 rounded-lg bg-gray-600 text-gray-400 cursor-pointer"

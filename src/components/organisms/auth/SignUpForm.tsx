@@ -28,6 +28,7 @@ const SignUpFormMemo: VFC = () => {
     imageChange,
     resetPreview,
   } = useAuth()
+  
   return (
     <>
       <div className="flex md:flex-row flex-col items-start md:space-x-5">
