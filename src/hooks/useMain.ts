@@ -36,12 +36,9 @@ export const useMain = () => {
     (e: ChangeEvent<HTMLInputElement>) => dispatch(setProfile(e.target.value)),
     [dispatch]
   )
-  const userPrefecture = useCallback(
-    (user) => {
-      return prefectures[(user?.prefecture || 0) - 1]
-    },
-    [prefectures]
-  )
+  const userPrefecture = useCallback((user) => {
+    return prefectures[(user?.prefecture || 0) - 1]
+  }, [])
 
   const userAge = useCallback((user) => {
     const birthday = user?.birthday.toString().replace(/-/g, '') || ''
@@ -74,7 +71,7 @@ export const useMain = () => {
       }
       updateUserMutation.mutate(data)
     },
-    [currentUser, createFormData]
+    [currentUser, createFormData, updateUserMutation]
   )
 
   return {

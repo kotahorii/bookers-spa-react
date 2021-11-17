@@ -121,7 +121,7 @@ export const useAuth = () => {
         signUpMutate.mutate(data)
       }
     },
-    [createFormData, email, password, isLogin]
+    [createFormData, email, password, isLogin, signInMutate, signUpMutate]
   )
   return {
     name,

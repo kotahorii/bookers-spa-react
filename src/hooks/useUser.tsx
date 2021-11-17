@@ -4,7 +4,6 @@ import {
   selectSelectedUser,
   selectIsOpenDetailModal,
   setIsOpenDetailModal,
-  resetSelectedUser,
 } from 'slices/userSlice'
 import { InputLike } from 'types/likeTypes'
 import { User } from 'types/userTypes'
@@ -30,7 +29,7 @@ export const useUser = () => {
       }
       createLikeMutation.mutate(data)
     },
-    [currentUser]
+    [currentUser, createLikeMutation]
   )
   const isLikedUser = (userId: number | number) => {
     if (likes) {

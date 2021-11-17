@@ -47,5 +47,5 @@ export const useChatRoom = () => {
     [id, currentUser, content, createMessageMutation]
   )
 
-  return { lastMessage, convertDateTime, submitMessage }
+  return { content, contentChange, lastMessage, convertDateTime, submitMessage }
 }
