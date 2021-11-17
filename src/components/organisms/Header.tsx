@@ -13,7 +13,7 @@ export const HeaderMemo = () => {
         <Link to="/users" className="hover:text-gray-300">
           users
         </Link>
-        <Link to="/chatRoom" className="hover:text-gray-300">
+        <Link to="/chatRooms" className="hover:text-gray-300">
           chat room
         </Link>
         <Link to="/main" className="hover:text-gray-300">

@@ -1,9 +1,11 @@
 import { PrivateRoute } from 'components/organisms/route/PrivateRoute'
 import { PublicRoute } from 'components/organisms/route/PublicRoute'
 import { Auth } from 'components/pages/Auth'
+import { ChatRooms } from 'components/pages/ChatRooms'
 import { Users } from 'components/pages/Users'
 import { Route, Routes } from 'react-router'
 import { Main } from './components/pages/Main'
+import { ChatRoom } from 'components/pages/ChatRoom'
 
 function App() {
   return (
@@ -29,6 +31,22 @@ function App() {
         element={
           <PrivateRoute>
             <Users />
+          </PrivateRoute>
+        }
+      />
+      <Route
+        path="/chatRooms"
+        element={
+          <PrivateRoute>
+            <ChatRooms />
+          </PrivateRoute>
+        }
+      />
+      <Route
+        path="/chatRoom/:id"
+        element={
+          <PrivateRoute>
+            <ChatRoom />
           </PrivateRoute>
         }
       />

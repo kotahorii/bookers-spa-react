@@ -6,6 +6,7 @@ export type Message = {
 }
 
 export type ResMessage = {
-  status: string
-  message: string
+  chatRoomId: number
+  userId: number | undefined
+  content: string
 }

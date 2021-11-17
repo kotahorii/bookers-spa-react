@@ -5,23 +5,15 @@ import { CustomModal } from 'components/organisms/main/CustomModal'
 import { Layout } from 'components/templates/Layout'
 import { useQueryLikes } from 'hooks/queries/useQueryLikes'
 import { useQueryUsers } from 'hooks/queries/useQueryUsers'
-import { useMain } from 'hooks/useMain'
 import { useUser } from 'hooks/useUser'
 import { memo } from 'react'
 import { setIsOpenDetailModal, setSelectedUser } from 'slices/userSlice'
 
 export const UsersMemo = () => {
   const { data: users, isLoading: isLoadingUsers } = useQueryUsers()
-  const { data: likes, isLoading: isLoadingLikes } = useQueryLikes()
-  const { userAge, userPrefecture } = useMain()
+  const { isLoading: isLoadingLikes } = useQueryLikes()
   const dispatch = useAppDispatch()
-  const {
-    isLikedUser,
-    handleCreateLike,
-    selectedUser,
-    isOpenDetailModal,
-    closeDetailModal,
-  } = useUser()
+  const { isOpenDetailModal, closeDetailModal } = useUser()
 
   if (isLoadingLikes && isLoadingUsers) return <Layout>Loading...</Layout>
   return (
